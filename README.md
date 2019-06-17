@@ -3,7 +3,7 @@
 
 ## Introduction
 
-Thus far we have a solid basic conceptual understanding of neural networks and their basic architecture. We've seen nueral networks for classification including a neural network with no hidden layers (logistic regression), one hidden layer, and several hidden layers. From here, we'll begin to use Keras, a package that has prebuilt many of the building blocks of neural networks which we investigated in previous lessons.  
+Thus far we have a solid basic conceptual understanding of neural networks and their basic architecture. We've seen neural networks for classification including a neural network with no hidden layers (logistic regression), one hidden layer, and several hidden layers. From here, we'll begin to use Keras, a package that has prebuilt many of the building blocks of neural networks which we investigated in previous lessons.  
 
 ## Objectives
 
@@ -87,16 +87,16 @@ plt.show()
     /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
       from ._conv import register_converters as _register_converters
     Using TensorFlow backend.
-
+    
 
     Raw Tensor shape: (60000, 28, 28)
     Tensor Slice [0:100] shape: (100, 28, 28)
     Tensor Slice [0:100] shape: (100, 28, 28)
     Tensor Slice [0:100] shape: (100, 28, 28)
+    
 
 
-
-![png](index_files/index_12_2.png)
+![png](output_12_2.png)
 
 
 In the above example, we sliced our tensor to obtain 100 of the 60,000 images. You can also slice tensors along other axes. For example, the 1st dimension is which image we are referring two, while the 2nd and 3rd axis are the pixels of these images themselves.For example, we could limit the images to the bottom right hand quadrant like this:
@@ -111,10 +111,10 @@ plt.show()
 ```
 
     Sliced tensor shape (includes all images but only the lower right hand corner of each: (60000, 14, 14)
+    
 
 
-
-![png](index_files/index_14_1.png)
+![png](output_14_1.png)
 
 
 ### Tensor Operations
@@ -164,7 +164,7 @@ print('Updated A:\n', A)
      [ 4  6  8]
      [ 7  9 11]
      [10 12 14]]
-
+    
 
 Noticed how B was broadcasted across A; a copy of B was added to each row in A.
 Finally, as with our previous work with linear algebra, we will also commonly take the dot product of tensors.
@@ -179,7 +179,7 @@ print(np.dot(B,B))
 ```
 
     14
-
+    
 
 Examining a slightly more complex example:
 
@@ -202,7 +202,7 @@ np.dot(A, B)
     
     B: [1 2 3] 
     
-
+    
 
 
 
@@ -242,7 +242,7 @@ model = models.Sequential()
 
 ### Adding layers
 
-Once we have initialized a network object as shown above, we can then add layers to the network which includes the number of layers we wish to add, as well as which activiation function we hope to use. For example, when coding from scratch, we previously used the sigmoid and ReLu activation functions.   
+Once we have initialized a network object as shown above, we can then add layers to the network which includes the number of layers we wish to add, as well as which activation function we hope to use. For example, when coding from scratch, we previously used the sigmoid and ReLu activation functions.   
 
 The `Dense` method indicates that this layer will be fully connected. There are other layer architectures that we will discuss further in upcoming labs and lessons.
 
