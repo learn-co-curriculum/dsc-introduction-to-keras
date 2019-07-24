@@ -35,7 +35,7 @@ A tensor is defined by three key attributes:
 
 eg Santa: `(790, 64, 64, 3)` matrix to a `(64*64*3, 790)` matrix!
 
-```{python} 
+```python 
 img_unrow = img.reshape(790, -1).T  
 ```
 
@@ -43,7 +43,7 @@ img_unrow = img.reshape(790, -1).T
 
 vector with `np.shape() (790,)`
 
-```{python} 
+```python
 np.reshape(vector, (1,790)) 
 ```
 
@@ -52,7 +52,9 @@ np.reshape(vector, (1,790))
 
 We've actually already seen this in previous lectures and labs, although not explicitly. Just like python's native lists, or NumPy arrays, we can slice tensors using the usual syntax:  
 
-```tensor[start_idx : end_idx]```.
+```python  
+tensor[start_idx : end_idx]
+```
 
 As with lists and NumPy arrays, this will include the start_idx element up to, but not including the end_idx element.
 
@@ -84,19 +86,19 @@ plt.imshow(digit, cmap=plt.cm.binary) #Display an example image for context
 plt.show()
 ```
 
-    /Users/matthew.mitchell/anaconda3/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
+    /Users/forest.polchow/anaconda3/lib/python3.6/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 == np.dtype(float).type`.
       from ._conv import register_converters as _register_converters
     Using TensorFlow backend.
-    
+
 
     Raw Tensor shape: (60000, 28, 28)
     Tensor Slice [0:100] shape: (100, 28, 28)
     Tensor Slice [0:100] shape: (100, 28, 28)
     Tensor Slice [0:100] shape: (100, 28, 28)
-    
 
 
-![png](output_12_2.png)
+
+![png](index_files/index_12_2.png)
 
 
 In the above example, we sliced our tensor to obtain 100 of the 60,000 images. You can also slice tensors along other axes. For example, the 1st dimension is which image we are referring two, while the 2nd and 3rd axis are the pixels of these images themselves.For example, we could limit the images to the bottom right hand quadrant like this:
@@ -111,10 +113,10 @@ plt.show()
 ```
 
     Sliced tensor shape (includes all images but only the lower right hand corner of each: (60000, 14, 14)
-    
 
 
-![png](output_14_1.png)
+
+![png](index_files/index_14_1.png)
 
 
 ### Tensor Operations
@@ -164,7 +166,7 @@ print('Updated A:\n', A)
      [ 4  6  8]
      [ 7  9 11]
      [10 12 14]]
-    
+
 
 Noticed how B was broadcasted across A; a copy of B was added to each row in A.
 Finally, as with our previous work with linear algebra, we will also commonly take the dot product of tensors.
@@ -179,7 +181,7 @@ print(np.dot(B,B))
 ```
 
     14
-    
+
 
 Examining a slightly more complex example:
 
@@ -202,7 +204,7 @@ np.dot(A, B)
     
     B: [1 2 3] 
     
-    
+
 
 
 
@@ -236,7 +238,7 @@ from keras import optimizers
 
 Afterwards, we define the type of network. We will discuss other network types later, but to date, we have examined sequential models; one layer builds upon the previous one and continues to chain until the end.
 
-```{python}
+```python
 model = models.Sequential()
 ```
 
@@ -248,7 +250,7 @@ The `Dense` method indicates that this layer will be fully connected. There are 
 
 Finally, the `input_shape` parameter is often optional. That is, in successive layers, Keras implies the required shape of the layer to be added based on the shape of the previous layer.
 
-```{python}
+```python
 model.add(layers.Dense(units, activation, input_shape))
 ```
 
@@ -256,7 +258,7 @@ model.add(layers.Dense(units, activation, input_shape))
 
 Once we have defined the network architecture and added layers to that network, we then compile the model before then training that model on our data.  
 
-```{python}
+```python
 model.compile(optimizer=optimizers.RMSprop(lr=0.001),
               loss='mse',
               metrics=['accuracy'])
@@ -266,7 +268,7 @@ Notice that this is also where we define our loss function.
 
 ### Training the model
 
-```{python}
+```python
 history = model.fit(x_train,
                     y_train,
                     epochs=20,
@@ -295,18 +297,18 @@ Here's some further notes regarding these terms from the Keras documentation FAQ
 
 When we fit the model as shown above, we not only update the model object itself, we are also returned a history associated with the model. (Hence our variable name.) With this, we can retrieve further information regarding how the model training progressed from epoch to epoch. To do this, you can access the history attribute of the returned object. Given our variable naming above, we would thus have:
 
-```history.history```
+`history.history`
 
 This will return a dictionary of the metrics we indicated when compiling the model. By default, the loss criteria will always be included as well. So in our example, this dictionary will have 2 keys, one for the loss, and one for the accuracy. If you wish to plot learning curves for the loss or accuracy versus the epochs, you can then simply retrieve these lists. For example:
 
-```history.history['loss']```
+`history.history['loss']`
 
 would return a list of the loss at each epoch.
 
 ## Making Predictions
 
 As with sci-kit learn and other prebuilt packages, making predictions from a trained model is relatively straightforward. To do this, you can simply use the `predict` method built into the model object. For example:  
-```{python}
+```python
 y_hat = model.predict(x)
 ```
 
@@ -316,7 +318,9 @@ Now that the model has been trained, our predictions are applying that model to 
 
 For example,   
 
-```model.evaluate(X_train, X_train_labels)``` will return the final loss associated with the model for the training data as well as any other metrics that were specified during compilation.
+```
+model.evaluate(X_train, X_train_labels)
+``` will return the final loss associated with the model for the training data as well as any other metrics that were specified during compilation.
 
 Similarly, 
 
