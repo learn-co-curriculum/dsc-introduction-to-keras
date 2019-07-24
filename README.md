@@ -318,13 +318,18 @@ Now that the model has been trained, our predictions are applying that model to 
 
 For example,   
 
-```
+```python
 model.evaluate(X_train, X_train_labels)
-``` will return the final loss associated with the model for the training data as well as any other metrics that were specified during compilation.
+``` 
+
+will return the final loss associated with the model for the training data as well as any other metrics that were specified during compilation.
 
 Similarly, 
 
-```model.evaluate(X_test, X_test_labels)``` will return the final loss associated with the model for the test data as well as any other specified metrics.
+```python
+model.evaluate(X_test, X_test_labels)
+``` 
+will return the final loss associated with the model for the test data as well as any other specified metrics.
 
 
 ## Additional Resources
