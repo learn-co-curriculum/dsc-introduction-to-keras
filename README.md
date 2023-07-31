@@ -1,4 +1,3 @@
-
 # Introduction to Keras
 
 ## Introduction
@@ -101,7 +100,9 @@ plt.show()
 
 
 
+    
 ![png](index_files/index_12_2.png)
+    
 
 
 In the above example, we sliced our tensor to obtain 100 of the 60,000 images. You can also slice tensors along other axes. For example, the first dimension is which image we are referring to, while the second and third axes are the pixels of these images themselves. For example, we could limit the images to the bottom right hand quadrant like this:
@@ -119,7 +120,9 @@ plt.show()
 
 
 
+    
 ![png](index_files/index_14_1.png)
+    
 
 
 ### Tensor Operations
@@ -263,7 +266,7 @@ model.add(layers.Dense(units, activation, input_shape))
 Once we have defined the network architecture and added layers to that network, we then compile the model before then training that model on our data.  
 
 ```python
-model.compile(optimizer=optimizers.RMSprop(lr=0.001),
+model.compile(optimizer=optimizers.RMSprop(learning_rate=0.001),
               loss='mse',
               metrics=['accuracy'])
 ```
@@ -337,14 +340,10 @@ model.evaluate(X_test, X_test_labels)
 will return the final loss associated with the model for the test data as well as any other specified metrics.
 
 
-## Additional Resources
+## Additional Resource
     
-* https://keras.io/getting-started/
-* https://keras.io/getting-started/sequential-model-guide/#compilation
-* https://www.coursera.org/learn/deep-neural-network/lecture/BhJlm/rmsprop
-* https://www.coursera.org/learn/deep-neural-network/lecture/qcogH/mini-batch-gradient-descent
 * A full book on Keras by the author of Keras himself:  
-    https://www.manning.com/books/deep-learning-with-python
+https://www.manning.com/books/deep-learning-with-python-second-edition
 
 ## Summary
 
